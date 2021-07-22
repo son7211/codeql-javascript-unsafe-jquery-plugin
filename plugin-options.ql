@@ -1,6 +1,7 @@
 import javascript
 
-from DataFlow::FunctionNode sourceNode
-where sourceNode = jquery().getAPropertyRead("fn").getAPropertySource().getAFunctionValue()
+from DataFlow::FunctionNode sourceNode, DataFlow::ParameterNode lastParam
+where sourceNode = jquery().getAPropertyRead("fn").getAPropertySource() and
+      lastParam = sourceNode.getLastParameter()
 
-select sourceNode
+select sourceNode, lastParam
