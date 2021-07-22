@@ -1,5 +1,5 @@
 import javascript
 
-from DataFlow::SourceNode sourceNode
-where sourceNode.getAPropertyRead().getPropertyName()="fn"
+from DataFlow::Node sourceNode
+where sourceNode = jquery().getAPropertyRead("fn")
 select sourceNode
