@@ -11,7 +11,7 @@
      Configuration() { this = "XssUnsafeJQueryPlugin"}
 
      override predicate isSource(DataFlow:Node source) {
-         exists(DataFlow::FunctionNode sourceNode | sourceNode=jquery().getAPropertyRead()("fn").getASource() 
+         exists(DataFlow::FunctionNode sourceNode | sourceNode=jquery().getAPropertyRead("fn").getAPropertySource() 
                 and source = sourceNode.getLastParameter())
          
      }
