@@ -10,13 +10,13 @@
  class Configuration extends TaintTracking::Configuration {
      Configuration() { this = "XssUnsafeJQueryPlugin"}
 
-     override predicate isSource(DataFlow:Node source) {
+     override predicate isSource(DataFlow::Node source) {
          exists(DataFlow::FunctionNode sourceNode | sourceNode=jquery().getAPropertyRead("fn").getAPropertySource() 
                 and source = sourceNode.getLastParameter())
          
      }
 
-     override predicate isSink(DataFlow:Node sink) {
+     override predicate isSink(DataFlow::Node sink) {
        sink = jquery().getACall().getArgument(0)  
          
      }
